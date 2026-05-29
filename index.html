@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wave Oval Hoodie – Navy | Sweats | Stüssy Canada</title>
+  <style>
+    @font-face {
+      font-family: 'HelveticaNeue';
+      src: url('https://ca.stussy.com/cdn/shop/t/4/assets/HelveticaNeueLTPro-Roman.woff2?v=99226345885995886811755215464') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'HelveticaNeue';
+      src: url('https://ca.stussy.com/cdn/shop/t/4/assets/HelveticaNeueLTPro-Md.woff2?v=90165916532395914481755215464') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'HelveticaNeue';
+      src: url('https://ca.stussy.com/cdn/shop/t/4/assets/HelveticaNeueLTPro-Bd.woff2?v=120088747007833075241755215464') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      color: #1a1a1a;
+      font-size: 10px;
+    }
+
+    /* ── Left sidebar — screenshot image, fixed ── */
+    .site-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 101;
+      background: #fff;
+    }
+
+    .site-sidebar img {
+      width: auto;
+      height: 100vh;
+      display: block;
+    }
+
+    /* ── Site nav ── */
+    .site-nav {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+
+    .site-nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-nav__actions a {
+      font-size: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    .site-nav__actions a:hover { text-decoration: underline; }
+
+    /* ── PDP layout ── */
+    .pdp {
+      margin-left: 160px;
+      display: grid;
+      grid-template-columns: 45vw 1fr;
+      align-items: start;
+    }
+
+    /* ── Image gallery ── */
+    .pdp__gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .pdp__gallery-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+
+    /* ── Product info sidebar ── */
+    .pdp__info {
+      position: sticky;
+      top: 54px;
+      padding: 45px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      max-width: 325px;
+    }
+
+    .pdp__title {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+      color: #1a1a1a;
+    }
+
+    .pdp__price {
+      font-size: 10px;
+      font-weight: 400;
+      margin-top: 8px;
+      color: #1a1a1a;
+    }
+
+    .pdp__color-label {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    .pdp__size-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin: 4px -10px 0;
+    }
+
+    .pdp__size-btn {
+      padding: 6px 10px;
+      border: none;
+      background: none;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #1a1a1a;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    .pdp__size-btn:hover { text-decoration: underline; }
+    .pdp__size-btn.is-selected { font-weight: 700; }
+    .pdp__size-btn.is-sold-out { color: #ccc; cursor: default; }
+    .pdp__size-btn.is-sold-out:hover { text-decoration: none; }
+
+    .pdp__color-swatches {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pdp__color-swatch {
+      width: 45px;
+      height: 56px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: #f0f0f0;
+    }
+
+    .pdp__color-swatch.is-active { border-color: #1a1a1a; }
+
+    .pdp__atc {
+      margin-top: 16px;
+      width: 100%;
+      height: 35px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background 100ms;
+    }
+
+    .pdp__atc:hover { background: #333; }
+
+    /* ── Accordions ── */
+    .accordion {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .accordion-btn {
+      width: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      padding: 6px 0;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-btn::after {
+      content: '›';
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1;
+      color: #1a1a1a;
+      flex-shrink: 0;
+    }
+
+    .accordion-item.is-open .accordion-btn::after {
+      transform: rotate(90deg);
+      display: inline-block;
+    }
+
+    .accordion-content {
+      display: none;
+      padding-bottom: 14px;
+    }
+
+    .accordion-item.is-open .accordion-content {
+      display: block;
+    }
+
+    .accordion-content ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .accordion-content li {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 2;
+      color: #1a1a1a;
+    }
+
+    .pdp__chat {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 6px 0;
+      display: block;
+    }
+
+    .pdp__chat:hover { text-decoration: underline; }
+
+    .pdp__shipping-note {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #1a1a1a;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left sidebar navigation screenshot -->
+  <aside class="site-sidebar">
+    <img src="sidebar-nav.png" alt="Stüssy navigation" />
+  </aside>
+
+  <!-- Nav -->
+  <nav class="site-nav">
+    <div class="site-nav__actions">
+      <a href="#">Search</a>
+      <a href="#">Bag</a>
+    </div>
+  </nav>
+
+  <!-- PDP -->
+  <div class="pdp">
+
+    <div class="pdp__gallery">
+      <img class="pdp__gallery-image"
+        src="https://ca.stussy.com/cdn/shop/files/1925181_NAVY_1.jpg?v=1777315160"
+        alt="Wave Oval Hoodie – Navy front" />
+      <img class="pdp__gallery-image"
+        src="https://ca.stussy.com/cdn/shop/files/1925181_NAVY_2.jpg?v=1777315160"
+        alt="Wave Oval Hoodie – Navy back" />
+    </div>
+
+    <div class="pdp__info">
+
+      <h1 id="product-title" class="pdp__title">Wave Oval Hoodie</h1>
+      <div id="product-price" class="pdp__price">$155</div>
+
+      <div id="product-color-label" class="pdp__color-label">Navy</div>
+
+      <div id="product-size-selector" class="pdp__size-row">
+        <button class="pdp__size-btn is-sold-out">XS</button>
+        <button class="pdp__size-btn is-sold-out">S</button>
+        <button class="pdp__size-btn is-sold-out">M</button>
+        <button class="pdp__size-btn is-sold-out">L</button>
+        <button id="size-xl" class="pdp__size-btn is-selected" onclick="selectSize(this)">XL</button>
+        <button class="pdp__size-btn is-sold-out">XXL</button>
+      </div>
+
+      <div id="product-color-swatches" class="pdp__color-swatches">
+        <img class="pdp__color-swatch is-active"
+          src="https://ca.stussy.com/cdn/shop/files/1925181_NAVY_1.jpg?v=1777315160"
+          alt="Navy" title="Navy" />
+        <img class="pdp__color-swatch"
+          src="https://ca.stussy.com/cdn/shop/files/1925181_ASHH_1.jpg?v=1777315111"
+          alt="Ash Heather" title="Ash Heather" />
+        <img class="pdp__color-swatch"
+          src="https://ca.stussy.com/cdn/shop/files/1925181_BLAC_1.jpg?v=1777315126"
+          alt="Black" title="Black" />
+      </div>
+
+      <button id="add-to-bag-btn" class="pdp__atc">Add to Bag</button>
+
+      <div class="accordion">
+
+        <div class="accordion-item" id="accordion-details">
+          <button class="accordion-btn" onclick="toggleAccordion('accordion-details')">Product Details</button>
+          <div class="accordion-content" aria-label="Product Details">
+            <ul>
+              <li>Relaxed fit hooded sweatshirt</li>
+              <li>Heavyweight 12.7oz cotton-blend fleece</li>
+              <li>Round drawcord in hood</li>
+              <li>Stüssy logo screenprint at front and back</li>
+              <li>Ribbed cuffs and hem</li>
+              <li>Kangaroo pocket</li>
+              <li>Unisex</li>
+              <li>Material: 75% cotton / 25% polyester</li>
+              <li>Imported</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item" id="accordion-size">
+          <button class="accordion-btn" onclick="toggleAccordion('accordion-size')">Size Guide</button>
+          <div class="accordion-content">
+            <ul>
+              <li>XS — Chest 34–36"</li>
+              <li>S — Chest 36–38"</li>
+              <li>M — Chest 38–40"</li>
+              <li>L — Chest 40–42"</li>
+              <li>XL — Chest 42–44"</li>
+              <li>XXL — Chest 44–46"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item" id="accordion-shipping">
+          <button class="accordion-btn" onclick="toggleAccordion('accordion-shipping')">Shipping &amp; Returns</button>
+          <div class="accordion-content">
+            <ul>
+              <li>Free shipping in Canada on orders over CA$200</li>
+              <li>Standard shipping 5–7 business days</li>
+              <li>Express shipping 2–3 business days</li>
+              <li>Returns within 30 days of purchase</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <a href="#" class="pdp__chat">Chat</a>
+      <p class="pdp__shipping-note">Free shipping in Canada on orders over CA$200. Exclusions apply.</p>
+
+    </div>
+  </div>
+
+  <script>
+    function selectSize(el) {
+      document.querySelectorAll('.pdp__size-btn:not(.is-sold-out)').forEach(b => b.classList.remove('is-selected'))
+      el.classList.add('is-selected')
+    }
+    function toggleAccordion(id) {
+      document.getElementById(id).classList.toggle('is-open')
+    }
+  </script>
+
+  <script
+    src="https://samanthaayeung.github.io/stussy-sample/comment-tool.iife.js"
+    data-repo="samanthaayeung/stussy-sample"
+    data-github-url="https://github.com"
+  ></script>
+
+</body>
+</html>
